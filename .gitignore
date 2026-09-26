@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Vercel
+.vercel
+
+# Secrets (future-proofing)
+.env
+.env*.local
+
+# Personal notes, not part of the site
+prj.txt
