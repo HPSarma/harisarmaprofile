@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hari Sarma</title>
+  <meta name="description" content="Hari Sarma, analytics leader in New York. NYU Stern MS in Business Analytics.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+
+    /* ============================================================
+       1. COLOR TOKENS
+       ============================================================ */
+    :root {
+      /* nav + hero: forest green with gold accents */
+      --forest:            #1f4d2e;
+      --forest-deep:        #173b23;
+      --on-forest:          #f1f7f2;
+      --on-forest-muted:    #c3d9c8;
+      --gold:               #d4af37;
+      --gold-deep:          #b8912a;
+
+      /* page body: blue neutrals */
+      --bg:                 #e8f1fb;
+      --surface:            #ffffff;
+      --text:                #0b2545;
+      --muted:              #3f5878;
+      --line:                #c9dcf0;
+      --accent:             #13315c;
+      --accent-soft:        #d3e5f7;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --forest:           #1a4127;
+        --forest-deep:       #12301c;
+        --gold:              #e0bd4d;
+        --gold-deep:         #c79f33;
+
+        --bg:                #0b1a33;
+        --surface:           #12264a;
+        --text:               #e6f0fb;
+        --muted:             #a9c1de;
+        --line:               #1f3a66;
+        --accent:            #8ec5f0;
+        --accent-soft:       #173561;
+      }
+    }
+
+    /* ============================================================
+       2. RESET + BASE
+       ============================================================ */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    h1, h2, h3 { font-family: "Fraunces", serif; font-weight: 600; }
+
+    /* ============================================================
+       3. LAYOUT
+       ============================================================ */
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+
+    section { padding: 64px 0; border-top: 1px solid var(--line); }
+    section:first-child { border-top: 0; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .timeline { display: grid; gap: 18px; }
+
+    /* ============================================================
+       4. NAVIGATION  (forest green + gold)
+       ============================================================ */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--forest-deep);
+      border-bottom: 2px solid var(--gold);
+    }
+    nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+
+    .brand { font-size: 20px; color: var(--gold); }
+
+    nav ul { list-style: none; display: flex; gap: 22px; font-size: 15px; }
+    nav ul a { color: var(--on-forest-muted); }
+    nav ul a:hover { color: var(--gold); text-decoration: none; }
+
+    /* ============================================================
+       5. HERO  (forest green + gold)
+       ============================================================ */
+    header.hero { padding: 96px 0 72px; background: var(--forest); color: var(--on-forest); }
+
+    .eyebrow { color: var(--gold); font-weight: 600; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
+
+    h1 { font-size: clamp(40px, 7vw, 64px); line-height: 1.08; margin: 14px 0 20px; }
+
+    .lede { font-size: 20px; color: var(--muted); max-width: 620px; }
+    .hero .lede { color: var(--on-forest-muted); }
+    .about-secondary { margin-top: 14px; }
+
+    /* ============================================================
+       6. BUTTONS
+       ============================================================ */
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+    .btn {
+      display: inline-block; padding: 11px 20px; border-radius: 8px;
+      font-weight: 500; font-size: 15px; border: 1px solid var(--accent);
+    }
+    .btn:hover { text-decoration: none; opacity: .9; }
+    .btn.primary { background: var(--accent); color: var(--bg); }
+
+    /* on the hero's forest background, buttons switch to gold */
+    .hero .btn { border-color: var(--gold); color: var(--on-forest); }
+    .hero .btn.primary { background: var(--gold); border-color: var(--gold); color: var(--forest-deep); }
+
+    /* ============================================================
+       7. CONTENT COMPONENTS
+       ============================================================ */
+    h2 { font-size: 30px; margin-bottom: 28px; color: var(--accent); }
+    h3 { font-size: 17px; font-weight: 600; }
+    .meta { color: var(--muted); font-size: 15px; }
+
+    .item {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+      border-left: 4px solid var(--accent);
+      padding: 20px 22px;
+    }
+    .item p { margin-top: 6px; color: var(--muted); font-size: 16px; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      background: var(--accent-soft); color: var(--accent);
+      padding: 6px 12px; border-radius: 999px; font-size: 14px; font-weight: 500;
+    }
+
+    ul.plain { list-style: none; display: grid; gap: 10px; }
+    ul.plain li { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+    ul.plain li span:last-child { color: var(--muted); font-size: 15px; white-space: nowrap; }
+
+    /* ============================================================
+       8. FOOTER
+       ============================================================ */
+    footer { padding: 40px 0 56px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+
+    /* ============================================================
+       9. RESPONSIVE
+       ============================================================ */
+    @media (max-width: 600px) {
+      nav ul { gap: 14px; font-size: 14px; }
+      nav ul li.hide-sm { display: none; }
+      header.hero { padding: 64px 0 48px; }
+      ul.plain li { flex-direction: column; gap: 2px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a class="brand" href="#">Hari Sarma</a>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li class="hide-sm"><a href="#awards">Awards</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">New York, NY</div>
+      <h1>Analytics leader who turns data into decisions.</h1>
+      <p class="lede">
+        I'm a collaborative analytics leader with a passion for driving value through data-driven
+        insight, bringing more than a decade of experience across financial services and insurance technology.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="https://www.linkedin.com/in/harinarayan-parameswara-sarma" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        <a class="btn" href="#experience">See my work</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="wrap">
+        <h2>About</h2>
+        <p>
+          My career spans enterprise systems analysis, business analysis, and advanced analytics.
+          I've worked at Cognizant, New York Life, TD Bank and now Ceres USA. I hold an MS in Business
+          Analytics from NYU Stern, where I valued how the curriculum combined rigorous technical work
+          with business strategy. I enjoy connecting the two: translating complex data into clear
+          recommendations that teams can act on.
+        </p>
+        <p class="about-secondary">
+          Outside work, I care deeply about community. I've captained New York Life's record-breaking
+          $6.2M Giving Campaign, served on the Ithaca College Advisory Board and led education as a
+          Toastmasters VP.
+        </p>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <h2>Experience &amp; Education</h2>
+        <div class="timeline">
+          <div class="item">
+            <h3>Ceres USA</h3>
+            <div class="meta">Current</div>
+          </div>
+          <div class="item">
+            <h3>TD Bank</h3>
+            <div class="meta">AML transformation</div>
+            <p>Part of the award-winning team behind the bank's anti-money-laundering transformation.</p>
+          </div>
+          <div class="item">
+            <h3>New York Life Insurance Company</h3>
+            <div class="meta">Annuities technology &amp; analytics</div>
+            <p>Worked on the core Annuities admin platform, handling requirements, system and impact analysis, and design for new and enhanced products.</p>
+          </div>
+          <div class="item">
+            <h3>Cognizant</h3>
+            <div class="meta">Insurance technology, 2010 – 2016</div>
+            <p>Delivered online services, digital marketing, and annuity platforms (Java/J2EE, SOAP, SQL) from design through deployment.</p>
+          </div>
+          <div class="item">
+            <h3>NYU Stern School of Business</h3>
+            <div class="meta">MS in Business Analytics · 2021 – 2022 · GPA 3.9</div>
+            <p>Studied machine learning, causal inference, optimization, network analytics and data visualization. For my capstone, I built a university enrollment prediction model using panel data methods.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <h2>Skills</h2>
+        <div class="tags">
+          <span class="tag">Business Analytics</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Causal Inference</span>
+          <span class="tag">Python</span>
+          <span class="tag">R</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Data Visualization</span>
+          <span class="tag">Optimization &amp; Simulation</span>
+          <span class="tag">Business Analysis (CBAP)</span>
+          <span class="tag">Scrum (CSM)</span>
+          <span class="tag">Insurance &amp; Banking</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="awards">
+      <div class="wrap">
+        <h2>Honors &amp; Awards</h2>
+        <div class="grid">
+          <div class="item">
+            <h3>TD Legendary Team</h3>
+            <div class="meta">TD Bank · Oct 2025</div>
+            <p>Exceptional team performance on the AML transformation.</p>
+          </div>
+          <div class="item">
+            <h3>TD WOW! Star</h3>
+            <div class="meta">TD Bank · Sep 2025</div>
+            <p>Highest individual award for exceptional performance within my first year.</p>
+          </div>
+          <div class="item">
+            <h3>Giving Campaign Captain</h3>
+            <div class="meta">New York Life · 2021</div>
+            <p>Helped raise a record-breaking $6.2M for philanthropic causes.</p>
+          </div>
+          <div class="item">
+            <h3>NYU Stern Alumni Spotlight</h3>
+            <div class="meta">MSBA '22</div>
+            <p>Featured by the NYU Stern MS in Business Analytics and AI program.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="wrap">
+        <h2>Certifications</h2>
+        <ul class="plain">
+          <li><span>Certified Business Analysis Professional (CBAP)</span><span>IIBA · 2018</span></li>
+          <li><span>Certified ScrumMaster (CSM)</span><span>Scrum Alliance · 2019</span></li>
+          <li><span>Leadership and Management Certificate Program</span><span>The Wharton School · 2021</span></li>
+          <li><span>People Analytics</span><span>Coursera | Wharton · 2022</span></li>
+          <li><span>Applied Machine Learning: Foundations</span><span>LinkedIn · 2021</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <h2>Let's connect</h2>
+        <p class="lede">I'm always happy to talk about analytics, data strategy or the MSBA program.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://www.linkedin.com/in/harinarayan-parameswara-sarma" target="_blank" rel="noopener">Message me on LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="yr"></span> Hari Sarma · New York, NY</div>
+  </footer>
+
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
